@@ -42,7 +42,7 @@ class App extends React.Component {
   handleSelectedBeer = (id) => {
     this.setState({
       selectedBeer: this.state.fullBeerList.find(beer => beer.id === id),
-      page: 1
+      page: 2
     })
   }
 
@@ -63,7 +63,11 @@ class App extends React.Component {
         />
       )
     } else if (this.state.page === 2) {
-        pageView = <BeerDetails />
+      pageView = (
+        <BeerDetails 
+          beer = {this.state.selectedBeer}
+        />
+      )
     }
 
     return (
