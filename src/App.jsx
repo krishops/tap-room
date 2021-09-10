@@ -22,13 +22,28 @@ class App extends React.Component {
     })
   }
 
+  addNewBeerToList = (newBeer) => {
+    this.setState({
+      fullBeerList: this.state.fullBeerList.concat(newBeer),
+      page: 0
+    })
+  }
+
 
   render () {
     let pageView
     if (this.state.page === 0) {
-        pageView = <BeerList />
+      pageView = (
+        <BeerList
+          beerList={this.state.fullBeerList}  
+        />
+      )
     } else if (this.state.page === 1) {
-        pageView = <BeerCreate />
+      pageView = (
+        <BeerCreate 
+          onNewBeerCreation={(beer) => this.addNewBeerToList(beer)}
+        />
+      )
     } else if (this.state.page === 2) {
         pageView = <BeerDetails />
     }

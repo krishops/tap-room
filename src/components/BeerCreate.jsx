@@ -40,7 +40,7 @@ function BeerCreate (props) {
         <label>Alcohol Content:</label>
           <input
             type='number'
-            name='price' />
+            name='alcoholContent' />
             
         <label>Price:</label>
           <input
