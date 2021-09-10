@@ -6,27 +6,26 @@ import BeerCreate from './components/BeerCreate';
 import * as api from './lib/api'
 
 class App extends React.Component {
+
   constructor () {
     super()
-
     this.state = {
       page: 0,
       fullBeerList: [],
       selectedBeer: null,
-      itemsInCart: []
     }
   }
 
   async componentDidMount () {
     const beers = await api.getBeers()
     this.setState({
-      fullBeerList: beers,
+      fullBeerList: beers
     })
   }
 
   updatePage (newPage = 0) {
     this.setState({
-      page: newPage,
+      page: newPage
     })
   }
 
@@ -53,20 +52,17 @@ class App extends React.Component {
       this.state.fullBeerList[index].availability = 0
     }
     this.setState({
-      fullBeerList: this.state.fullBeerList,
-      page: 2
+      fullBeerList: this.state.fullBeerList
     })
   }
 
   purchaseKeg = () => {
     const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
-    this.state.fullBeerList[index].availability = parseInt(this.state.fullBeerList[index].availability - 124)
-    if (this.state.fullBeerList[index].availability < 0) {
-      this.state.fullBeerList[index].availability = 0
+    if (this.state.fullBeerList[index].availability >= 124) {
+      this.state.fullBeerList[index].availability = parseInt(this.state.fullBeerList[index].availability - 124)
     }
     this.setState({
-      fullBeerList: this.state.fullBeerList,
-      page: 2
+      fullBeerList: this.state.fullBeerList
     })
   }
 
@@ -108,19 +104,14 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <button onClick={() => this.updatePage(0)}>
-            Beer List
-          </button>
-          <button onClick={() => this.updatePage(1)}>
-            Add New Beer
-          </button>
+          <button onClick={() => this.updatePage(0)}>Beer List</button>
+          <button onClick={() => this.updatePage(1)}>Add New Beer</button>
         </nav>
 
         {pageView}
       </div>
     )
   }
-  
 }
 
-export default App;
+export default App

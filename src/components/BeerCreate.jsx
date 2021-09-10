@@ -2,7 +2,6 @@ import React from 'react';
 import {v4} from 'uuid';
 import PropTypes from 'prop-types';
 
-
 function BeerCreate (props) {
 
   function createNewBeer(event) {
@@ -51,12 +50,12 @@ function BeerCreate (props) {
           <input
             type='number'
             name='availability'
-            placeholder='number of pints' />
+            placeholder='number of kegs' />
+            <hr />
         <button type='submit'>Add Keg</button>
       </form>
     </React.Fragment>
   )
-
 }
 
 BeerCreate.propTypes = {

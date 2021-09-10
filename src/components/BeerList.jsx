@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const BeerList = (props) => {
 
   return(
@@ -16,10 +15,10 @@ const BeerList = (props) => {
       ))}
     </React.Fragment>
   )
-
 }
 
 BeerList.propTypes = {
   beerList: PropTypes.array
 }
+
 export default BeerList
