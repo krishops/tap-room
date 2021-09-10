@@ -60,8 +60,12 @@ class App extends React.Component {
 
   restockBeer = () => {
     const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
+    let totalPints = parseInt(this.state.fullBeerList[index].availability)
+    console.log("total pints ", this.state.fullBeerList[index].availability)
+    let newTotalPints = totalPints + 124
+    console.log("newTotalPints ", newTotalPints)
     // this.state.fullBeerList[index].availability++
-    this.state.fullBeerList[index].availability = (this.state.fullBeerList[index].availability += '124')
+    this.state.fullBeerList[index].availability = newTotalPints
     this.setState({
       fullBeerList: this.state.fullBeerList
     })
