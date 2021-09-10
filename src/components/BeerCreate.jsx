@@ -52,7 +52,7 @@ function BeerCreate (props) {
             type='number'
             name='availability'
             placeholder='number of pints' />
-        <button type='submit'>Add Product</button>
+        <button type='submit'>Add Keg</button>
       </form>
     </React.Fragment>
   )

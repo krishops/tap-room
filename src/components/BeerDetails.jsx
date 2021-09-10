@@ -11,7 +11,7 @@ const BeerDetails = (props) => {
       <h4>Alcohol Content: {beer.alcoholContent}</h4>
       <p>{beer.description}</p>
       <p>${beer.price}</p>
-      <p>{beer.availability} pints</p>
+      <p>{beer.availability} pints available</p>
       <button onClick={props.purchaseBeer}>Buy Now!</button>
     </React.Fragment>
   )
