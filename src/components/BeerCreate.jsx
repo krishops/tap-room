@@ -14,7 +14,7 @@ function BeerCreate (props) {
       description: event.target.description.value,
       alcoholContent: event.target.alcoholContent.value,
       price: event.target.price.value,
-      availability: event.target.availability.value,
+      availability: parseInt(event.target.availability.value) * 124,
       id: v4()
     });
   }

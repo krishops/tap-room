@@ -46,7 +46,7 @@ class App extends React.Component {
     })
   }
 
-  purchaseBeer = () => {
+  purchasePint = () => {
     const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
     this.state.fullBeerList[index].availability--
     if (this.state.fullBeerList[index].availability < 0) {
@@ -58,14 +58,21 @@ class App extends React.Component {
     })
   }
 
-  restockBeer = () => {
+  purchaseKeg = () => {
     const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
-    let totalPints = parseInt(this.state.fullBeerList[index].availability)
-    console.log("total pints ", this.state.fullBeerList[index].availability)
-    let newTotalPints = totalPints + 124
-    console.log("newTotalPints ", newTotalPints)
-    // this.state.fullBeerList[index].availability++
-    this.state.fullBeerList[index].availability = newTotalPints
+    this.state.fullBeerList[index].availability = parseInt(this.state.fullBeerList[index].availability - 124)
+    if (this.state.fullBeerList[index].availability < 0) {
+      this.state.fullBeerList[index].availability = 0
+    }
+    this.setState({
+      fullBeerList: this.state.fullBeerList,
+      page: 2
+    })
+  }
+
+  restockKeg = () => {
+    const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
+    this.state.fullBeerList[index].availability = parseInt(this.state.fullBeerList[index].availability) + 124
     this.setState({
       fullBeerList: this.state.fullBeerList
     })
@@ -91,8 +98,9 @@ class App extends React.Component {
       pageView = (
         <BeerDetails 
           beer={this.state.selectedBeer}
-          purchaseBeer={this.purchaseBeer}
-          restockBeer={this.restockBeer}
+          purchasePint={this.purchasePint}
+          purchaseKeg={this.purchaseKeg}
+          restockKeg={this.restockKeg}
         />
       )
     }

@@ -11,6 +11,7 @@ const BeerList = (props) => {
         <div>
         <div>{beer.name}</div>
         <button onClick={() => props.handleSelectedBeer(beer.id)}>Get Details</button>
+        <hr />
         </div>
       ))}
     </React.Fragment>
