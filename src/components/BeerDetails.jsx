@@ -9,10 +9,14 @@ const BeerDetails = (props) => {
       <h1>{beer.name}</h1>
       <h2>{beer.brand}</h2>
       <h4>Alcohol Content: {beer.alcoholContent}</h4>
-      <p>{beer.description}</p>
-      <p>${beer.price}</p>
-      <p>{beer.availability} pints available</p>
-      <button onClick={props.purchaseBeer}>Buy Now!</button>
+        <div className='col'>
+          <div className='description-box'>{beer.description}</div>
+          <p>Price: ${beer.price}</p>
+          <p>Availability: {beer.availability <= 0 ? "Out of Stock" : beer.availability + " pints"}</p>
+          <button onClick={props.purchaseBeer}>Buy Now!</button>
+          <button onClick={props.restockBeer}>Restock</button>
+          {console.log("We successfully added a keg", beer.availability)}
+        </div>
     </React.Fragment>
   )
 }

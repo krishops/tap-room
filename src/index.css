@@ -22,3 +22,22 @@ form {
 
   border: 2px solid black;
 }
+
+.description-box {
+  padding: 5px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 1px;
+  box-shadow: 0px 0px 0px rgba(66,66,66,.0);
+  text-shadow: 0px 0px 0px rgba(66,66,66,.75);
+  width: 25%;
+}
+
+.col {
+  columns: 1;
+  column-width: 33%;
+}

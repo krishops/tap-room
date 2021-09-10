@@ -58,6 +58,15 @@ class App extends React.Component {
     })
   }
 
+  restockBeer = () => {
+    const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
+    // this.state.fullBeerList[index].availability++
+    this.state.fullBeerList[index].availability = (this.state.fullBeerList[index].availability += '124')
+    this.setState({
+      fullBeerList: this.state.fullBeerList
+    })
+  }
+
 
   render () {
     let pageView
@@ -79,6 +88,7 @@ class App extends React.Component {
         <BeerDetails 
           beer={this.state.selectedBeer}
           purchaseBeer={this.purchaseBeer}
+          restockBeer={this.restockBeer}
         />
       )
     }
