@@ -12,6 +12,7 @@ const BeerDetails = (props) => {
       <p>{beer.description}</p>
       <p>${beer.price}</p>
       <p>{beer.availability} pints</p>
+      <button onClick={props.purchaseBeer}>Buy Now!</button>
     </React.Fragment>
   )
 }

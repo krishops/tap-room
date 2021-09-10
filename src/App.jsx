@@ -46,6 +46,18 @@ class App extends React.Component {
     })
   }
 
+  purchaseBeer = () => {
+    const index = this.state.fullBeerList.findIndex(beer => beer.id === this.state.selectedBeer.id)
+    this.state.fullBeerList[index].availability--
+    if (this.state.fullBeerList[index].availability < 0) {
+      this.state.fullBeerList[index].availability = 0
+    }
+    this.setState({
+      fullBeerList: this.state.fullBeerList,
+      page: 2
+    })
+  }
+
 
   render () {
     let pageView
@@ -65,7 +77,8 @@ class App extends React.Component {
     } else if (this.state.page === 2) {
       pageView = (
         <BeerDetails 
-          beer = {this.state.selectedBeer}
+          beer={this.state.selectedBeer}
+          purchaseBeer={this.purchaseBeer}
         />
       )
     }
