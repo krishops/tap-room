@@ -10,11 +10,7 @@ const BeerList = (props) => {
       {props.beerList.map((beer) => (
         <div>
         <div>{beer.name}</div>
-        <div>{beer.brand}</div>
-        <div>{beer.price}</div>
-        <div>{beer.description}</div>
-        <div>{beer.availability}</div>
-        <div>{beer.alcoholContent}</div>
+        <button onClick={() => props.handleSelectedBeer(beer.id)}>Get Details</button>
         </div>
       ))}
     </React.Fragment>

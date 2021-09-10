@@ -3,6 +3,7 @@ import BeerList from './components/BeerList';
 import BeerDetails from './components/BeerDetails';
 import BeerCreate from './components/BeerCreate';
 
+import * as api from './lib/api'
 
 class App extends React.Component {
   constructor () {
@@ -16,6 +17,13 @@ class App extends React.Component {
     }
   }
 
+  async componentDidMount () {
+    const beers = await api.getBeers()
+    this.setState({
+      fullBeerList: beers,
+    })
+  }
+
   updatePage (newPage = 0) {
     this.setState({
       page: newPage,
@@ -26,6 +34,15 @@ class App extends React.Component {
     this.setState({
       fullBeerList: this.state.fullBeerList.concat(newBeer),
       page: 0
+    }, () => {
+      api.updateBeers(this.state.fullBeerList)
+    });
+  }
+
+  handleSelectedBeer = (id) => {
+    this.setState({
+      selectedBeer: this.state.fullBeerList.find(beer => beer.id === id),
+      page: 1
     })
   }
 
@@ -36,6 +53,7 @@ class App extends React.Component {
       pageView = (
         <BeerList
           beerList={this.state.fullBeerList}  
+          handleSelectedBeer={this.handleSelectedBeer}
         />
       )
     } else if (this.state.page === 1) {

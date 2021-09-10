@@ -7,7 +7,7 @@ function BeerDetails () {
 
   return(
     <React.Fragment>
-      <h1>Beer Name</h1>
+      <h1>Beer Details</h1>
     </React.Fragment>
   )
 
